@@ -37,12 +37,14 @@ td-card .image {
     position: absolute;
     top: 40px;
     width: 100%;
+    height: 258px;
+    overflow: hidden;
 }
 
 td-card img {
-    height: 258px;
+    /*height: 258px;*/
     width: 100%;
-    border-radius: 6px;
+    border-radius: 6px
 }
 
 /* Overlay styling*/
