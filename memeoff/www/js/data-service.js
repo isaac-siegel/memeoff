@@ -4,7 +4,7 @@ app.factory('Data', function() {
   // Some fake testing data
   var memes = [{
     url: "http://i.imgur.com/gDST0yjm.jpg",
-    caption: 'Awesome Caption',
+    caption: 'Awesome Cssdsdon asdasd',
     score: 5
   }, {
     url: "http://i.imgur.com/gDST0yjm.jpg",
