@@ -49,3 +49,107 @@ angular.module('starter.controllers', [])
 .controller('LeaderboardCtrl', function($scope, Data) {
   $scope.leaderboardOfMemes = Data.getLeaderboard();
 })
+
+.controller('imageController', function($scope, $cordovaCamera, $cordovaFile) {
+    // $scope.images = [];
+    $scope.image;
+    $scope.addImage = function(useCamera) {
+  //     var options = {
+	// 	destinationType : Camera.DestinationType.FILE_URL,
+	// 	sourceType : Camera.PictureSourceType.CAMERA,
+  //   //sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+	// 	allowEdit : false,
+	// 	encodingType: Camera.EncodingType.JPEG,
+	// 	popoverOptions: CameraPopoverOptions,
+	// };
+  var options = {
+
+      quality: 100,
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,
+      allowEdit: true,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 100,
+      targetHeight: 100,
+      popoverOptions: CameraPopoverOptions,
+      saveToPhotoAlbum: false,
+      correctOrientation:true
+    };
+    if (!useCamera){
+      options.sourceType = Camera.PictureSourceType.PHOTOLIBRARY;
+    }
+	// 3
+	$cordovaCamera.getPicture(options).then(function(imageData) {
+    var imageString = "data:image/jpeg;base64," + imageData;
+    //var imageString = imageData.toDataURL();
+    alert(imageString);
+		$scope.memeInProcess = {
+      userName: "Billyhilly",
+      url: imageString,
+      caption: "Noah's Ark V2: God Also Dislikes Fossil Fuels",
+      score: 0
+    }
+
+		onImageSuccess(imageData);
+
+		function onImageSuccess(fileURI) {
+			createFileEntry(fileURI);
+		}
+
+		function createFileEntry(fileURI) {
+			window.resolveLocalFileSystemURL(fileURI, copyFile, fail);
+		}
+
+		// 5
+		function copyFile(fileEntry) {
+			var name = fileEntry.fullPath.substr(fileEntry.fullPath.lastIndexOf('/') + 1);
+			var newName = makeid() + name;
+
+			window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(fileSystem2) {
+				fileEntry.copyTo(
+					fileSystem2,
+					newName,
+					onCopySuccess,
+					fail
+				);
+			},
+			fail);
+		}
+
+		// 6
+		function onCopySuccess(entry) {
+			$scope.$apply(function () {
+				// $scope.images.push(entry.nativeURL);
+        $scope.image = entry.nativeURL;
+			});
+		}
+
+		function fail(error) {
+			console.log("fail: " + error.code);
+		}
+
+		function makeid() {
+			var text = "";
+			var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+			for (var i=0; i < 5; i++) {
+				text += possible.charAt(Math.floor(Math.random() * possible.length));
+			}
+			return text;
+		}
+
+	}, function(err) {
+		console.log(err);
+	});
+        console.log("add image");
+    }
+
+    $scope.urlForImage = function(imageName) {
+      var name = imageName.substr(imageName.lastIndexOf('/') + 1);
+  var trueOrigin = cordova.file.dataDirectory + name;
+  console.log(trueOrigin);
+  return trueOrigin;
+
+        console.log("get correct path for image");
+    }
+});

@@ -15,6 +15,22 @@
     <p>
       For help sending push notifications, join the <a href="https://apps.ionic.io/signup" target="_blank">Ionic Platform</a> and check out <a href="http://docs.ionic.io/docs/push-overview" target="_blank">Ionic Push</a>. We also have other services available.
     </p>
-    <button class = "button button-positive">Test Button</button>
+    <ion-view class="has-header padding" ng-controller="imageController">
+  <button class="button button-energized" ng-click="addImage(true)">
+	  Camera
+  </button>
+  <button class="button button-energized" ng-click="addImage(false)">
+	  Photo Library
+  </button>
+  <br><br>
+  <div>
+	  <!-- <img ng-repeat="image in images" ng-src="{{urlForImage(image)}}" height="200px"/> -->
+    <!-- <img ng-src="{{urlForImage(image)}}" height="400px"/> -->
+    <meme-composite meme="memeInProcess"></meme-composite>
+    <button class="button button-energized" ng-click="submitNewMeme(memeInProcess)">
+  	  Submit
+    </button>
+  </div>
+</ion-view>
   </ion-content>
 </ion-view>
