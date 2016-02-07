@@ -107,7 +107,7 @@ angular.module('starter.controllers', [])
 	$cordovaCamera.getPicture(options).then(function(imageData) {
     var imageString = "data:image/jpeg;base64," + imageData;
     //var imageString = imageData.toDataURL();
-    alert(imageString);
+    // alert(imageString);
 		$scope.memeInProcess = {
       userName: "Billyhilly",
       url: imageString,

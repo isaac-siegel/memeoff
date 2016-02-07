@@ -79,7 +79,7 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
 
 
 
-    function uploadMeme(imageBase64, caption){
+    function uploadMeme(imageBase64, caption, destoyerOfWorlds){
       var userID = user.uid;
       uploadToImgur(imageBase64)
         .then(function successCallback(response) {
@@ -95,7 +95,7 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
             });
             var memeKey = newMemeRef.key();
             saveMemeToUserUploadHistory(memeKey)
-
+            destoyerOfWorlds();
             console.log(imgLink)
           }, function errorCallback(response) {
             console.log("Error")
