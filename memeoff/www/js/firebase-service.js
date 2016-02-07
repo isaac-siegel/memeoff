@@ -123,7 +123,7 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
         // create an instance of the authentication service
 
         // login with Google
-        auth.$authWithOAuthPopup("google").then(function(authData) {
+        auth.$authWithOAuthRedirect("google").then(function(authData) {
             console.log("Logged in as:", authData.uid);
 
             rootRef.child("users").child(authData.uid).once("value", function (dataSnapshot) {
@@ -155,6 +155,17 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
 
         }).catch(function(error) {
             console.log("Authentication failed:", error);
+            if (error.code === "TRANSPORT_UNAVAILABLE") {
+              Auth.$authWithOAuthPopup("google").then(function(authData) {
+                // User successfully logged in. We can log to the console
+                // since we’re using a popup here
+                console.log(authData);
+                alert(authData.uid)
+      });
+    } else {
+      // Another error occurred
+      console.log(error);
+    }
         });
     }
 
