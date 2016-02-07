@@ -27,26 +27,25 @@ angular.module('starter.controllers', [])
 
 .controller('VoteCtrl', function($scope, $stateParams, Data) {
   $scope.memesToVoteFor = Data.getMemesToVoteFor();
-  $scope.onSwipeLeft = function(){
-    alert("Swiped left");
+
+
+  $scope.cardDestroyed = function(index) {
+    console.log("hkjhk");
+    $scope.memesToVoteFor.splice(index, 1);
+  };
+
+  $scope.addCard = function() {
+
+  }
+
+  $scope.cardSwipedLeft = function(index) {
+    console.log('LEFT SWIPE');
+  };
+  $scope.cardSwipedRight = function(index) {
+    console.log('RIGHT SWIPE');
   };
 })
 
 .controller('LeaderboardCtrl', function($scope, Data) {
   $scope.leaderboardOfMemes = Data.getLeaderboard();
-
-
-    $scope.cardSwipedLeft = function(index) {
-        console.log('Left swipe');
-    }
-
-    $scope.cardSwipedRight = function(index) {
-        console.log('Right swipe');
-    }
-
-    $scope.cardDestroyed = function(index) {
-        // $scope.cards.splice(index, 1);
-        console.log('Card removed');
-    }
-
-});
+})

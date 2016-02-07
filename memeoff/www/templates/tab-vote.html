@@ -6,23 +6,24 @@
     <!-- </div> -->
 
 
-    <td-cards >
-               <td-card  id="td-card" ng-repeat="memeToRender in memesToVoteFor" on-destroy="cardDestroyed($index)"
-               on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
-               on-partial-swipe="cardPartialSwipe(amt)">
-                   <div class="title">
-                       <!-- {{card.title}} -->
-                       Username: {{memeToRender.userName}} 
-                   </div>
-                   <div class="image">
-                      <meme-composite meme="memesToVoteFor[0]" ></meme-composite>
-                       <div class="no-text overlayBox"><div class="noBox boxed ion-sad-outline assertive"></div></div>
 
-                       <!-- <img ng-src="{{memeToRender.url}}"> -->
-                       <div class="yes-text overlayBox"><div class="yesBox boxed ion-happy-outline balanced" id="centerMe"></div></div>
-                   </div>
-               </td-card>
-           </td-cards>
+        <td-cards>
+          <td-card ng-repeat="memeToRender in memesToVoteFor" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}">
+            <div class="title">
+                     Username: {{memeToRender.userName}}
+             </div>
+            <div class="image" >
+
+              <meme-composite meme="memeToRender"></meme-composite>
+              <div class="no-text overlayBox"><div class="noBox boxed ion-sad-outline assertive"></div></div>
+              <div class="yes-text overlayBox"><div class="yesBox boxed ion-happy-outline balanced" id="centerMe"></div></div>
+
+              <!-- <img ng-src="{{memeToRender.url}}"> -->
+
+            </div>
+          </td-card>
+        </td-cards>
+
 
   </ion-content>
 </ion-view>
