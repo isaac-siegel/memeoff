@@ -61,7 +61,15 @@ angular.module('starter.controllers', [])
   // $scope.leaderboardOfMemes = Data.getLeaderboard();
   $scope.leaderboardOfMemes = firebaseService.getLeaderboard();
 
+  $scope.refreshLeaderboard = function() {
+    console.log("REFRESH CALLED");
+    firebaseService.getLeaderboard();
+    $scope.$broadcast('scroll.refreshComplete');
+  };
+
 })
+
+
 
 .controller('LoginCtrl', function($scope, firebaseService) {
   $scope.loginWithGoogle = function() {
