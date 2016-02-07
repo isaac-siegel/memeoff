@@ -9,7 +9,7 @@
 
         <div class="no-memes-left ion-checkmark-circled positive"> No Memes Left!</div>
         <td-cards>
-          <td-card ng-repeat="memeToRender in MEME_DATA.memesToVoteFor" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}">
+          <td-card ng-repeat="memeToRender in MEME_DATA.memesToVoteFor" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft(memeToRender.key)" on-swipe-right="cardSwipedRight(memeToRender.key)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}">
             <div class="title">
                      Username: BOB
              </div>

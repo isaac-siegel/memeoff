@@ -10,8 +10,27 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
 
     var MEME_DATA = {};
     MEME_DATA.memesToVoteFor = [];
+    var LEADERBOARD = {};
+    LEADERBOARD.memes = [];
 
     checkAuthState();
+
+
+    function getLeaderboard(){
+      memesRef.once('value',function(snapshot){
+        var p = snapshot.val();
+        LEADERBOARD.memes = [];
+        var ndx=0;
+        for (var key in p){
+          if (p.hasOwnProperty(key)){
+            LEADERBOARD.memes[ndx] = p[key];
+            LEADERBOARD.memes[ndx].key = key;
+            ndx++;
+          }
+        }
+
+      })
+    }
 
     function checkAuthState(){
       console.log("sup")
@@ -23,6 +42,7 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
             user = authData;
             userRef = rootRef.child("users").child(user.uid);
             getMemesToVoteFor();
+            getLeaderboard();
         } else {
             $state.go('login');
 
@@ -42,6 +62,7 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
             for (var key in p){
               if (p.hasOwnProperty(key)){
                 MEME_DATA.memesToVoteFor[ndx] = p[key];
+                MEME_DATA.memesToVoteFor[ndx].key = key;
                 ndx++;
               }
             }
@@ -159,6 +180,8 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
                 //Need .apply because firebase async happens outside of angular digest
                 $rootScope.$apply(function(){
                     getMemesToVoteFor();
+                    getLeaderboard();
+
                     $state.go('tab.upload');
                 });
             });
@@ -170,7 +193,6 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
                 // User successfully logged in. We can log to the console
                 // since we’re using a popup here
                 console.log(authData);
-                alert(authData.uid)
       });
     } else {
       // Another error occurred
@@ -196,6 +218,12 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
       // getMemesToVoteFor();
       return MEME_DATA;
     }
+
+    this.getLeaderboard= function () {
+      // getMemesToVoteFor();
+      return LEADERBOARD;
+    }
+
 
     this.upvoteMeme = function (memeKey) {
         var memeRef = memesRef.child(memeKey).child("score");

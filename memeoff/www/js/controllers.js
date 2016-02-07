@@ -51,14 +51,16 @@ angular.module('starter.controllers', [])
   $scope.cardSwipedLeft = function(index) {
     console.log('LEFT SWIPE');
   };
-  $scope.cardSwipedRight = function(index) {
+  $scope.cardSwipedRight = function(key) {
     console.log('RIGHT SWIPE');
-    // firebaseService.upvoteMeme(KEY);
+    firebaseService.upvoteMeme(key);
   };
 })
 
-.controller('LeaderboardCtrl', function($scope, Data) {
-  $scope.leaderboardOfMemes = Data.getLeaderboard();
+.controller('LeaderboardCtrl', function($scope, firebaseService) {
+  // $scope.leaderboardOfMemes = Data.getLeaderboard();
+  $scope.leaderboardOfMemes = firebaseService.getLeaderboard();
+
 })
 
 .controller('LoginCtrl', function($scope, firebaseService) {
