@@ -1,7 +1,7 @@
 <ion-view view-title="Leaderboard">
   <ion-content>
     <ion-list>
-      <p ng-repeat="meme in leaderboardOfMemes">{{meme.score}}</p>
+      <p ng-repeat="meme in leaderboardOfMemes | orderBy:'-score'">{{meme.score}}</p>
 
 
     </ion-list>
