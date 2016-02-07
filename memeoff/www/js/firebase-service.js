@@ -215,12 +215,12 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
     }
 
     this.getMemesToVoteFor= function () {
-      // getMemesToVoteFor();
+      getMemesToVoteFor();
       return MEME_DATA;
     }
 
     this.getLeaderboard= function () {
-      // getMemesToVoteFor();
+      getLeaderboard();
       return LEADERBOARD;
     }
 
