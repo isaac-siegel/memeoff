@@ -30,16 +30,18 @@ angular.module('starter.controllers', [])
 })
 
 .controller('VoteCtrl', function($scope, $stateParams, Data, firebaseService) {
-  $scope.getMemesToVoteFor = function(){
-    $scope.memesToVoteFor = firebaseService.getMemesToVoteFor();
+  // $scope.getMemesToVoteFor = function(){
+  $scope.MEME_DATA = {};
+  $scope.MEME_DATA.memesToVoteFor = [];
+    $scope.MEME_DATA = firebaseService.getMemesToVoteFor();
 
-  }
+  // }
   // $scope.memesToVoteFor = Data.getMemesToVoteFor();
 
 
   $scope.cardDestroyed = function(index) {
     console.log("hkjhk");
-    $scope.memesToVoteFor.splice(index, 1);
+    $scope.MEME_DATA.memesToVoteFor.splice(index, 1);
   };
 
   $scope.addCard = function() {

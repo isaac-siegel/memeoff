@@ -1,4 +1,4 @@
-app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseArray, $firebaseObject, $state, $rootScope, $timeout, $http) {
+app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseArray, $firebaseObject,$timeout, $state, $rootScope, $timeout, $http) {
 
     //PRIVATE
     var rootRef = new Firebase("https://memeoff.firebaseio.com/");
@@ -8,9 +8,10 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
     var username = "";
     var user = {};
 
-    var memesToVoteFor;
+    var MEME_DATA = {};
+    MEME_DATA.memesToVoteFor = [];
 
-    // checkAuthState();
+    checkAuthState();
 
     function checkAuthState(){
       console.log("sup")
@@ -21,6 +22,7 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
             console.log(authData)
             user = authData;
             userRef = rootRef.child("users").child(user.uid);
+            getMemesToVoteFor();
         } else {
             $state.go('login');
 
@@ -34,11 +36,18 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
       lastMemeVotedOnRef.once('value', function(dataSnapshot) {
         var lastMemeVotedOnKey = dataSnapshot.val()
         var ref = memesRef.orderByKey().startAt(lastMemeVotedOnKey).once("value", function(snapshot) {
-          $rootScope.$apply(function(){memesToVoteFor = snapshot.val();})
+          $rootScope.$apply(function(){p = snapshot.val();})
+            MEME_DATA.memesToVoteFor = [];
+            var ndx=0;
+            for (var key in p){
+              if (p.hasOwnProperty(key)){
+                MEME_DATA.memesToVoteFor[ndx] = p[key];
+                ndx++;
+              }
+            }
 
 
-
-          console.log(memesToVoteFor)
+          console.log(MEME_DATA.memesToVoteFor)
         });
 
       });
@@ -185,8 +194,8 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
     }
 
     this.getMemesToVoteFor= function () {
-      getMemesToVoteFor();
-      return memesToVoteFor;
+      // getMemesToVoteFor();
+      return MEME_DATA;
     }
 
     this.upvoteMeme = function (memeKey) {
