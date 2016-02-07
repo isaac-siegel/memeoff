@@ -58,11 +58,12 @@ td-card img {
 }
 
 .boxed {
-    height: 50px;
+    height: 55px;
     width: 100px;
-    padding: 10px;
+    /*padding: 10px;*/
+    padding: 0% 8%;
     border-radius: 6px;
-    font-size: 30px;
+    font-size: 50px;
 }
 
 .yes-text {
@@ -70,7 +71,8 @@ td-card img {
 }
 
 .yesBox {
-    margin: 10% 60% 0% 10%;
+    /*margin: 10% 60% 0% 10%;*/
+    margin: 35%;
     border: 2px solid #00FF00;
     color: rgb(0, 256, 0);
     -webkit-transform: rotate(-25deg);
@@ -81,7 +83,8 @@ td-card img {
 }
 
 .noBox {
-    margin: 10% 10% 0% 60%;
+    /*margin: 30% 30% 0% 30%;*/
+    margin: 35%;
     border: 2px solid #FF0000;
     color: rgb(256, 0, 0);
     -webkit-transform: rotate(25deg);

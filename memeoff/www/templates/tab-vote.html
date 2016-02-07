@@ -12,14 +12,14 @@
                on-partial-swipe="cardPartialSwipe(amt)">
                    <div class="title">
                        <!-- {{card.title}} -->
-                       Hello
+                       Username: {{memeToRender.userName}} 
                    </div>
                    <div class="image">
+                      <meme-composite meme="memesToVoteFor[0]" ></meme-composite>
                        <div class="no-text overlayBox"><div class="noBox boxed ion-sad-outline assertive"></div></div>
-                       <!-- <meme-composite meme="memesToVoteFor[0]" ></meme-composite> -->
 
-                       <img ng-src="{{memeToRender.url}}">
-                       <div class="yes-text overlayBox"><div class="yesBox boxed" id="centerMe">Save</div></div>
+                       <!-- <img ng-src="{{memeToRender.url}}"> -->
+                       <div class="yes-text overlayBox"><div class="yesBox boxed ion-happy-outline balanced" id="centerMe"></div></div>
                    </div>
                </td-card>
            </td-cards>

@@ -3,10 +3,12 @@ app.factory('Data', ['$http', function($http) {
 
   // Some fake testing data
   var memes = [{
+    userName: "Billyhilly",
     url: "http://i.imgur.com/gDST0yjm.jpg",
     caption: "Noah's Ark V2: God Also Dislikes Fossil Fuels",
     score: 5
   }, {
+    userName: "Willynilly",
     url: "http://i.imgur.com/gDST0yjm.jpg",
     caption: 'Awesome Caption2',
     score: 4
