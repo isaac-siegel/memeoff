@@ -2,10 +2,27 @@
   <ion-content>
     <!-- <h1>TINDER VOTE THING HERE</h1> -->
     <!-- <div ng-repeat="memeToRender in memesToVoteFor"> -->
-      <meme-composite meme="memesToVoteFor[0]" on-swipe-left="onSwipeLeft()" ></meme-composite>
       <!-- {{meme.url}} -->
     <!-- </div> -->
-    <userinfo user="jakob"></userinfo>
+
+
+    <td-cards >
+               <td-card  id="td-card" ng-repeat="memeToRender in memesToVoteFor" on-destroy="cardDestroyed($index)"
+               on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)"
+               on-partial-swipe="cardPartialSwipe(amt)">
+                   <div class="title">
+                       <!-- {{card.title}} -->
+                       Hello
+                   </div>
+                   <div class="image">
+                       <div class="no-text overlayBox"><div class="noBox boxed">Trash</div></div>
+                       <!-- <meme-composite meme="memesToVoteFor[0]" ></meme-composite> -->
+
+                       <img ng-src="{{memeToRender.url}}">
+                       <div class="yes-text overlayBox"><div class="yesBox boxed" id="centerMe">Save</div></div>
+                   </div>
+               </td-card>
+           </td-cards>
 
   </ion-content>
 </ion-view>

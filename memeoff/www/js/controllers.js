@@ -34,4 +34,19 @@ angular.module('starter.controllers', [])
 
 .controller('LeaderboardCtrl', function($scope, Data) {
   $scope.leaderboardOfMemes = Data.getLeaderboard();
+
+
+    $scope.cardSwipedLeft = function(index) {
+        console.log('Left swipe');
+    }
+
+    $scope.cardSwipedRight = function(index) {
+        console.log('Right swipe');
+    }
+
+    $scope.cardDestroyed = function(index) {
+        // $scope.cards.splice(index, 1);
+        console.log('Card removed');
+    }
+
 });
