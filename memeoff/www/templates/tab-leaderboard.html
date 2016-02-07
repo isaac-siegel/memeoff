@@ -1,5 +1,9 @@
 <ion-view view-title="Leaderboard">
   <ion-content>
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="refreshLeaderboard()">
+    </ion-refresher>
     <ion-list>
       <div ng-repeat="meme in leaderboardOfMemes.memes | orderBy:'-score' ">
         <div class="center" style="width:50%; ">
