@@ -50,6 +50,17 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
     }
   })
 
+  .state('tab.vote', {
+    url: '/vote',
+    views: {
+      'tab-vote': {
+        templateUrl: 'templates/tab-vote.html',
+        controller: 'VoteCtrl'
+      }
+    }
+  })
+
+
   .state('tab.chats', {
       url: '/chats',
       views: {

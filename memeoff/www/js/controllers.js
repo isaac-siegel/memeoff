@@ -25,6 +25,11 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
+.controller('VoteCtrl', function($scope, $stateParams, Data) {
+  $scope.memesToVoteFor = Data.getMemesToVoteFor();
+
+})
+
 .controller('LeaderboardCtrl', function($scope, Data) {
   $scope.leaderboardOfMemes = Data.getLeaderboard();
 });

@@ -20,6 +20,12 @@ app.factory('Data', function() {
     getOneMeme: function() {
       console.log("getOneMeme() called")
       return memes[0];
+    },
+
+    //Assume this list is ordered by score
+    getMemesToVoteFor: function() {
+      console.log("getMemesToVoteFor() called")
+      return memes;
     }
 
   };
