@@ -1,9 +1,9 @@
 <ion-view view-title="Leaderboard">
   <ion-content>
     <ion-list>
-      <div ng-repeat="meme in leaderboardOfMemes | orderBy:'-score' ">
+      <div  width="50px"  ng-repeat="meme in leaderboardOfMemes | orderBy:'-score' ">
 
-        <meme-composite meme="meme"></meme-composite>
+        <meme-composite  meme="meme"></meme-composite>
       </div>
 
     </ion-list>
