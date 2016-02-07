@@ -1,6 +1,10 @@
 angular.module('starter.controllers', [])
 
-.controller('UploadCtrl', function($scope) {})
+.controller('UploadCtrl', function($scope, Data) {
+
+  $scope.aMeme = Data.getOneMeme();
+  console.log($scope.aMeme)
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
@@ -21,8 +25,6 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('LeaderboardCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+.controller('LeaderboardCtrl', function($scope, Data) {
+  $scope.leaderboardOfMemes = Data.getLeaderboard();
 });

@@ -1,9 +1,9 @@
 <ion-view view-title="Leaderboard">
   <ion-content>
     <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
+      <p ng-repeat="meme in leaderboardOfMemes">{{meme.score}}</p>
+
+
     </ion-list>
   </ion-content>
 </ion-view>
