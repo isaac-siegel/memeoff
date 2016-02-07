@@ -6,7 +6,7 @@
     <!-- </div> -->
 
 
-
+{{memesToVoteFor.length}}
         <td-cards>
           <td-card ng-repeat="memeToRender in memesToVoteFor" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}">
             <div class="title">
@@ -24,6 +24,7 @@
           </td-card>
         </td-cards>
 
+        <button class = "button button-positive" ng-click="getMemesToVoteFor()">Test Button</button>
 
   </ion-content>
 </ion-view>
