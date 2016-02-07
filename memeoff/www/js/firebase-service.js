@@ -10,7 +10,7 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
 
     var memesToVoteFor;
 
-    checkAuthState();
+    // checkAuthState();
 
     function checkAuthState(){
       console.log("sup")
@@ -123,7 +123,9 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
         // create an instance of the authentication service
 
         // login with Google
-        auth.$authWithOAuthRedirect("google").then(function(authData) {
+        auth.$authWithOAuthPopup("google").then(function(authData) {
+          alert();
+
             console.log("Logged in as:", authData.uid);
 
             rootRef.child("users").child(authData.uid).once("value", function (dataSnapshot) {
