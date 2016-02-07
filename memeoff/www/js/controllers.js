@@ -27,7 +27,9 @@ angular.module('starter.controllers', [])
 
 .controller('VoteCtrl', function($scope, $stateParams, Data) {
   $scope.memesToVoteFor = Data.getMemesToVoteFor();
-
+  $scope.onSwipeLeft = function(){
+    alert("Swiped left");
+  };
 })
 
 .controller('LeaderboardCtrl', function($scope, Data) {
