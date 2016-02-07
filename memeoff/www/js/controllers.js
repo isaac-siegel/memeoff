@@ -73,7 +73,8 @@ angular.module('starter.controllers', [])
 .controller('imageController', function($scope, $cordovaCamera, $cordovaFile, firebaseService) {
     // $scope.images = [];
     $scope.submitNewMeme = function(memeInProcess){
-      firebaseService.uploadMeme(memeInProcess.url, memeInProcess.caption );
+      var destoyerOfWorlds = function(memeInProcess){memeInProcess={};}
+      firebaseService.uploadMeme(memeInProcess.url, memeInProcess.caption, destoyerOfWorlds );
     }
 
 
@@ -109,9 +110,9 @@ angular.module('starter.controllers', [])
     //var imageString = imageData.toDataURL();
     // alert(imageString);
 		$scope.memeInProcess = {
-      userName: "Billyhilly",
+      userName: "Billy Hilly",
       url: imageString,
-      caption: "Noah's Ark V2: God Also Dislikes Fossil Fuels",
+      caption: "Hacker Skills",
       score: 0
     }
 
