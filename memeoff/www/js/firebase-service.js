@@ -133,7 +133,6 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
 
         // login with Google
         auth.$authWithOAuthPopup("google").then(function(authData) {
-          alert();
 
             console.log("Logged in as:", authData.uid);
 
@@ -189,7 +188,7 @@ app.service('firebaseService', function($q, $firebase, $firebaseAuth,$firebaseAr
     }
 
 
-    this.uploadPhoto= function (base64Photo, caption) {
+    this.uploadMeme= function (base64Photo, caption) {
         uploadMeme(base64Photo, caption);
     }
 

@@ -68,8 +68,13 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('imageController', function($scope, $cordovaCamera, $cordovaFile) {
+.controller('imageController', function($scope, $cordovaCamera, $cordovaFile, firebaseService) {
     // $scope.images = [];
+    $scope.submitNewMeme = function(memeInProcess){
+      firebaseService.uploadMeme(memeInProcess.url, memeInProcess.caption );
+    }
+
+
     $scope.image;
     $scope.addImage = function(useCamera) {
   //     var options = {
