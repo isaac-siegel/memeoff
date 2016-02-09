@@ -97,4 +97,9 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 
+})
+.config(function($ionicConfigProvider) {
+  $ionicConfigProvider.platform.android.tabs.position('bottom');
+  $ionicConfigProvider.platform.android.navBar.alignTitle('center');
+
 });
